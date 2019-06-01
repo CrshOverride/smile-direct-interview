@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace smile_direct_interview.Controllers
+namespace SmileDirectInterview.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
