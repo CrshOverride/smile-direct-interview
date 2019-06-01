@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/smile-direct-interview.csproj"
+                "${workspaceFolder}/src/SmileDirect.Web/SmileDirect.Web.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/smile-direct-interview.csproj"
+                "${workspaceFolder}/src/SmileDirect.Web/SmileDirect.Web.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/smile-direct-interview.csproj"
+                "${workspaceFolder}/src/SmileDirect.Web/SmileDirect.Web.csproj"
             ],
             "problemMatcher": "$tsc"
         }

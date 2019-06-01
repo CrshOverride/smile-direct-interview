@@ -9,9 +9,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/bin/Debug/netcoreapp2.2/smile-direct-interview.dll",
+      "program": "${workspaceFolder}/src/SmileDirect.Web/bin/Debug/netcoreapp2.2/smile-direct-interview.dll",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/src/SmileDirect.Web",
       "stopAtEntry": false,
       "launchBrowser": {
         "enabled": false
