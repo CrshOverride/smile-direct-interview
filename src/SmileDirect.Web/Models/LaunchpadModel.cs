@@ -1,6 +1,6 @@
 using System;
 
-namespace SmileDirectInterview.Models
+namespace SmileDirect.Web.Models
 {
     public class LaunchpadModel
     {

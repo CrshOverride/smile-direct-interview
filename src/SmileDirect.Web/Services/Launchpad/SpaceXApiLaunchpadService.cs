@@ -5,22 +5,22 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
-using SmileDirectInterview.Models;
+using SmileDirect.Web.Models;
 
-namespace SmileDirectInterview.Services.Launchpad
+namespace SmileDirect.Web.Services.Launchpad
 {
     public class SpaceXApiLaunchpadService : ILaunchpadService
     {
         private IConfiguration Configuration { get; set; }
-        private HttpClient Client { get; set; }
+        private IHttpClientService Client { get; set; }
 
-        public SpaceXApiLaunchpadService(IConfiguration configuration, HttpClient client)
+        public SpaceXApiLaunchpadService(IConfiguration configuration, IHttpClientService client)
         {
             Configuration = configuration;
             Client = client;
         }
 
-        public async Task<IEnumerable<LaunchpadModel>> GetAll()
+        public async Task<IEnumerable<LaunchpadModel>> GetAllAsync()
         {
             var baseUrl = Configuration.GetValue("SpaceX:BaseUrl", "https://api.spacexdata.com");
             var version = Configuration.GetValue("SpaceX:Version", "v3");

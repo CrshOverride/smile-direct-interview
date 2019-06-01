@@ -15,7 +15,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Converters;
 
-namespace SmileDirectInterview
+namespace SmileDirect.Web
 {
     public class Startup
     {

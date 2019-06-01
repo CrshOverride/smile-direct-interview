@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SmileDirectInterview.Models;
+using SmileDirect.Web.Models;
 
-namespace SmileDirectInterview.Services.Launchpad
+namespace SmileDirect.Web.Services.Launchpad
 {
     public class DatabaseLaunchpadService : ILaunchpadService
     {
-        public async Task<IEnumerable<LaunchpadModel>> GetAll()
+        public async Task<IEnumerable<LaunchpadModel>> GetAllAsync()
         {
             throw new NotImplementedException();
         }

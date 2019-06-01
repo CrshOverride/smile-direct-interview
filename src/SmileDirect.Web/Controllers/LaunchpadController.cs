@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using SmileDirectInterview.Models;
-using SmileDirectInterview.Services.Launchpad;
+using SmileDirect.Web.Models;
+using SmileDirect.Web.Services.Launchpad;
 
-namespace SmileDirectInterview.Controllers
+namespace SmileDirect.Web.Controllers
 {
     [Route("api/launchpads")]
     [ApiController]
@@ -30,7 +30,7 @@ namespace SmileDirectInterview.Controllers
         {
             var provider = Configuration["Launchpads:Provider"];
             var launchpadService = LaunchpadServiceFactory(provider);
-            var launchpads = await launchpadService.GetAll();
+            var launchpads = await launchpadService.GetAllAsync();
 
             return launchpads.ToList();
         }

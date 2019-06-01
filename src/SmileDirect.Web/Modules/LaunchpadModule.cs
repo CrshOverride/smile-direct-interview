@@ -1,10 +1,10 @@
 using System;
-using System.Net.Http;
 using Autofac;
 using Microsoft.Extensions.Configuration;
-using SmileDirectInterview.Services.Launchpad;
+using SmileDirect.Web.Services;
+using SmileDirect.Web.Services.Launchpad;
 
-namespace SmileDirectInterview.Modules
+namespace SmileDirect.Web.Modules
 {
     public class LaunchpadModule : Module
     {
@@ -12,7 +12,7 @@ namespace SmileDirectInterview.Modules
         {
             builder.Register<ILaunchpadService>((c, p) => {
                 var configuration = c.Resolve<IConfiguration>();
-                var httpClient = c.Resolve<HttpClient>();
+                var httpClient = c.Resolve<IHttpClientService>();
 
                 var type = p.TypedAs<string>();
 

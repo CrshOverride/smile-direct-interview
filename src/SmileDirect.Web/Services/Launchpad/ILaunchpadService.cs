@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using SmileDirectInterview.Models;
+using SmileDirect.Web.Models;
 
-namespace SmileDirectInterview.Services.Launchpad
+namespace SmileDirect.Web.Services.Launchpad
 {
     public interface ILaunchpadService
     {
-        Task<IEnumerable<LaunchpadModel>> GetAll();
+        Task<IEnumerable<LaunchpadModel>> GetAllAsync();
     }
 }
