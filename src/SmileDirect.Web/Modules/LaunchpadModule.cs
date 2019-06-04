@@ -11,18 +11,18 @@ namespace SmileDirect.Web.Modules
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.Register<ILaunchpadService>((c, p) => {
-                var configuration = c.Resolve<IConfiguration>();
-                var httpClient = c.Resolve<IHttpClientService>();
+            builder.RegisterType<SpaceXApiLaunchpadService>().AsSelf();
 
+            builder.RegisterType<DatabaseLaunchpadService>().AsSelf();
+
+            builder.Register<ILaunchpadService>((c, p) => {
                 var type = p.TypedAs<string>();
 
                 switch(type) {
                     case string s when s.Equals("spacex", StringComparison.InvariantCultureIgnoreCase):
-                        var logger = c.Resolve<ILogger<SpaceXApiLaunchpadService>>();
-                        return new SpaceXApiLaunchpadService(configuration, httpClient, logger);
+                        return c.Resolve<SpaceXApiLaunchpadService>();
                     case string s when s.Equals("database", StringComparison.InvariantCultureIgnoreCase):
-                        return new DatabaseLaunchpadService();
+                        return c.Resolve<DatabaseLaunchpadService>();
                     default:
                         throw new ArgumentException("LaunchpadService implementation not found.");
                 }
