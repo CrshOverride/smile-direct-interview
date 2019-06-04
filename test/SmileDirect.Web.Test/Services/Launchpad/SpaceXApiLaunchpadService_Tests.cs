@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoFixture;
 using AutoFixture.Xunit2;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Moq;
 using SmileDirect.Web.Models;
 using SmileDirect.Web.Services;
@@ -34,7 +35,8 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         [Theory,  AutoMoqData]
         public async Task GetAllAsync_Returns_All_Results(
             [Frozen] Mock<IConfiguration> config,
-            [Frozen] Mock<IHttpClientService> client
+            [Frozen] Mock<IHttpClientService> client,
+            [Frozen] Mock<ILogger> logger
         )
         {
             var content = new StringContent(SimpleContent);
@@ -44,7 +46,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
             config.Setup(c => c[It.IsAny<string>()]).Returns("test");
             client.Setup(c => c.GetAsync(It.IsAny<string>())).Returns(Task.FromResult(responseMessage));
 
-            var service = new SpaceXApiLaunchpadService(config.Object, client.Object);
+            var service = new SpaceXApiLaunchpadService(config.Object, client.Object, logger.Object);
             var response = (await service.GetAllAsync(null)).ToList();
 
             Assert.Equal(1, response.Count);
@@ -56,7 +58,8 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         [Theory, AutoMoqData]
         public async Task GetAllAsync_With_Single_Id_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
-            [Frozen] Mock<IHttpClientService> client
+            [Frozen] Mock<IHttpClientService> client,
+            [Frozen] Mock<ILogger> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -66,7 +69,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
             config.Setup(c => c[It.IsAny<string>()]).Returns("test");
             client.Setup(c => c.GetAsync(It.IsAny<string>())).Returns(Task.FromResult(responseMessage));
 
-            var service = new SpaceXApiLaunchpadService(config.Object, client.Object);
+            var service = new SpaceXApiLaunchpadService(config.Object, client.Object, logger.Object);
             var response = (await service.GetAllAsync(new List<FilterModel>() { new FilterModel { Field = "id", Value = "some" } })).ToList();
 
             Assert.Equal(2, response.Count);
@@ -77,7 +80,8 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         [Theory, AutoMoqData]
         public async Task GetAllAsync_With_Single_Name_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
-            [Frozen] Mock<IHttpClientService> client
+            [Frozen] Mock<IHttpClientService> client,
+            [Frozen] Mock<ILogger> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -87,7 +91,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
             config.Setup(c => c[It.IsAny<string>()]).Returns("test");
             client.Setup(c => c.GetAsync(It.IsAny<string>())).Returns(Task.FromResult(responseMessage));
 
-            var service = new SpaceXApiLaunchpadService(config.Object, client.Object);
+            var service = new SpaceXApiLaunchpadService(config.Object, client.Object, logger.Object);
             var response = (await service.GetAllAsync(new List<FilterModel>() { new FilterModel { Field = "name", Value = "some" } })).ToList();
 
             Assert.Equal(2, response.Count);
@@ -98,7 +102,8 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         [Theory, AutoMoqData]
         public async Task GetAllAsync_With_Single_Status_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
-            [Frozen] Mock<IHttpClientService> client
+            [Frozen] Mock<IHttpClientService> client,
+            [Frozen] Mock<ILogger> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -108,7 +113,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
             config.Setup(c => c[It.IsAny<string>()]).Returns("test");
             client.Setup(c => c.GetAsync(It.IsAny<string>())).Returns(Task.FromResult(responseMessage));
 
-            var service = new SpaceXApiLaunchpadService(config.Object, client.Object);
+            var service = new SpaceXApiLaunchpadService(config.Object, client.Object, logger.Object);
             var response = (await service.GetAllAsync(new List<FilterModel>() { new FilterModel { Field = "status", Value = "retired" } })).ToList();
 
             Assert.Equal(2, response.Count);
@@ -119,7 +124,8 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         [Theory, AutoMoqData]
         public async Task GetAllAsync_With_Compound_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
-            [Frozen] Mock<IHttpClientService> client
+            [Frozen] Mock<IHttpClientService> client,
+            [Frozen] Mock<ILogger> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -129,7 +135,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
             config.Setup(c => c[It.IsAny<string>()]).Returns("test");
             client.Setup(c => c.GetAsync(It.IsAny<string>())).Returns(Task.FromResult(responseMessage));
 
-            var service = new SpaceXApiLaunchpadService(config.Object, client.Object);
+            var service = new SpaceXApiLaunchpadService(config.Object, client.Object, logger.Object);
             var response = (await service.GetAllAsync(new List<FilterModel>() {
                 new FilterModel { Field = "status", Value = "retired" },
                 new FilterModel { Field = "id", Value = "some" }

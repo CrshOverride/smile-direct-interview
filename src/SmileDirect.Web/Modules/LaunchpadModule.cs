@@ -1,6 +1,7 @@
 using System;
 using Autofac;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using SmileDirect.Web.Services;
 using SmileDirect.Web.Services.Launchpad;
 
@@ -18,7 +19,8 @@ namespace SmileDirect.Web.Modules
 
                 switch(type) {
                     case string s when s.Equals("spacex", StringComparison.InvariantCultureIgnoreCase):
-                        return new SpaceXApiLaunchpadService(configuration, httpClient);
+                        var logger = c.Resolve<ILogger<SpaceXApiLaunchpadService>>();
+                        return new SpaceXApiLaunchpadService(configuration, httpClient, logger);
                     case string s when s.Equals("database", StringComparison.InvariantCultureIgnoreCase):
                         return new DatabaseLaunchpadService();
                     default:
