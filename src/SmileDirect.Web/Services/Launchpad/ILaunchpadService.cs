@@ -7,6 +7,6 @@ namespace SmileDirect.Web.Services.Launchpad
 {
     public interface ILaunchpadService
     {
-        Task<IEnumerable<LaunchpadModel>> GetAllAsync();
+        Task<IEnumerable<LaunchpadModel>> GetAllAsync(List<FilterModel> filters);
     }
 }

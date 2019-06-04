@@ -26,11 +26,11 @@ namespace SmileDirect.Web.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LaunchpadModel>>> Get()
+        public async Task<ActionResult<IEnumerable<LaunchpadModel>>> Get([FromQuery] List<FilterModel> filters)
         {
             var provider = Configuration["Launchpads:Provider"];
             var launchpadService = LaunchpadServiceFactory(provider);
-            var launchpads = await launchpadService.GetAllAsync();
+            var launchpads = await launchpadService.GetAllAsync(filters);
 
             return launchpads.ToList();
         }
