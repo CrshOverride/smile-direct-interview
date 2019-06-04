@@ -36,7 +36,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         public async Task GetAllAsync_Returns_All_Results(
             [Frozen] Mock<IConfiguration> config,
             [Frozen] Mock<IHttpClientService> client,
-            [Frozen] Mock<ILogger> logger
+            [Frozen] Mock<ILogger<SpaceXApiLaunchpadService>> logger
         )
         {
             var content = new StringContent(SimpleContent);
@@ -59,7 +59,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         public async Task GetAllAsync_With_Single_Id_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
             [Frozen] Mock<IHttpClientService> client,
-            [Frozen] Mock<ILogger> logger
+            [Frozen] Mock<ILogger<SpaceXApiLaunchpadService>> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -81,7 +81,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         public async Task GetAllAsync_With_Single_Name_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
             [Frozen] Mock<IHttpClientService> client,
-            [Frozen] Mock<ILogger> logger
+            [Frozen] Mock<ILogger<SpaceXApiLaunchpadService>> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -103,7 +103,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         public async Task GetAllAsync_With_Single_Status_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
             [Frozen] Mock<IHttpClientService> client,
-            [Frozen] Mock<ILogger> logger
+            [Frozen] Mock<ILogger<SpaceXApiLaunchpadService>> logger
         )
         {
             var content = new StringContent(ComplexContent);
@@ -125,7 +125,7 @@ namespace SmileDirect.Web.Test.Services.Launchpad
         public async Task GetAllAsync_With_Compound_Filter_Returns_Proper_Results(
             [Frozen] Mock<IConfiguration> config,
             [Frozen] Mock<IHttpClientService> client,
-            [Frozen] Mock<ILogger> logger
+            [Frozen] Mock<ILogger<SpaceXApiLaunchpadService>> logger
         )
         {
             var content = new StringContent(ComplexContent);
